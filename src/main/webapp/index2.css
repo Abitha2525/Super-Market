@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+body{
+	margin-right : 0px;
+	overflow-x : hidden;
+	overflow-y : scroll;
+	background : #C6DAB7;
+	opacity : 0.9; 
+	font-family : Apple Chancery;
+	user-select : none;
+}
+.options{
+	width : 30%;
+	height : 60%;
+	border : 1px solid black;
+	display : flex;
+	flex-direction : column;
+	justify-content : space-evenly;
+    position : absolute;
+    background : #BBE9A0;
+    align-items : center;
+    left : 35%;
+    top : 30%;
+    font-family : Apple Chancery;
+}
+
+#relatedProducts1{
+	width : 80%;
+	height : 10%;
+	font-family : Apple Chancery;
+}
+
+#relatedProducts2{
+    width : 80%;
+	height : 10%;
+	font-family : Apple Chancery;
+}
+
+#relatedProducts3{
+   width : 80%;
+   height : 10%;
+   font-family : Apple Chancery;
+}
+
+#relatedProducts4{
+   width : 80%;
+   height : 10%;
+   font-family : Apple Chancery;
+}
+#relatedProducts5{
+   width : 80%;
+   height : 10%;
+   font-family : Apple Chancery;
+}
+
+#relatedProducts6{
+   width : 80%;
+   height : 10%;
+   font-family : Apple Chancery;
+}
+
+#relatedProducts7{
+	width : 80%;
+	height : 10%;
+	font-family : Apple Chancery;
+}
+#selectSpecificProduct{
+	width : 30%;
+	height : 20%;
+	font-family : Apple Chancery;
+}
+
+td, th{
+	border : 1px solid black;
+	border-radius : 2%;
+	font-family : Apple Chancery;
+	text-align : center;
+}
+
+#productTable{
+	border-collapse: collapse;
+	font-family : Apple Chancery;
+	background : #BBE9A0;
+	width : 100%;
+}
+
+#resultDiv{
+	width : 100%;
+	display : none;
+	position : absolute;
+	font-family : Apple Chancery;
+}
+
+#logOut{
+	width : 5%;
+	height : 5%;
+	border : 1px solid black;
+	font-size : 1em;
+	font-family : serif;
+	position : absolute;
+	color : black;
+	top : 2%;
+	left : 93%;
+	display : flex;
+	align-items : center;
+	justify-content : space-around;
+	background : black;
+	color : white;
+	border-radius : 20px;
+	font-family : Apple Chancery;
+}
+
+#flowsOfAdmin{
+	width : 20%;
+	height : 100%;
+	position : absolute;
+	display : flex;
+	flex-direction : column;
+	justify-content : space-evenly;
+	align-items : center;
+	font-family : Apple Chancery;
+}
+
+.box{
+	width : 100%;
+	height : 30%;
+	border : 1px solid black;
+	display : flex;
+	align-items : center;
+	justify-content : space-evenly;
+	background : #BBE9A0;
+	font-family : Apple Chancery;
+}
+
+.box:hover{
+	background : #40A453;
+}
+
+#see{
+	width : 100%;
+	height : 40%;
+	display : flex;
+	flex-direction : column;
+	justify-content : space-evenly;
+	align-items : center;
+	font-family : Apple Chancery;
+}
+
+.react{
+	height : 100%;
+	overflow-y : scroll;
+	width : 30%; 
+	height : 10%; 
+	background : #C6DAB7; 
+	border-radius : 20px;
+	font-family : Apple Chancery;
+}
+
+#customers{
+	width : 100%;
+	display : none;
+	position : absolute;
+	font-family : Apple Chancery;
+}
+
+#customerTable{
+	border-collapse: collapse;
+	font-family : Apple Chancery;
+	background : #BBE9A0;
+	font-size : 1.5em;
+	width : 100%;
+}
+
+#div{
+	height : 80%;
+	width : 40%;
+	overflow-y : scroll;
+	position : absolute;
+	margin-left : 30%;
+	margin-top : 5%;
+}
+
+.data{
+	padding : 10px;
+}
+
+.edits{
+	width : 40%;
+	height : 10%;
+	border-radius : 5%;
+	background : #BED1AF;
+	display : flex;
+	flex-direction : column;
+	justify-content : space-evenly;
+	align-items : center;
+	font-family : Apple Chancery;
+}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="index2.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<div id = "logOut" onclick = "logout();">LogOut</div>
+
+<div id = "flowsOfAdmin">
+<div class = "box" onclick = "addAProductDiv();">Add a product</div>
+<div class = "box" onclick = "deleteAProductDiv();">Delete a product</div>
+<div class = "box" onclick = "editAProductDiv();">Edit a product</div>
+<div class = "box" onclick = "increaseAProductQuantityDiv();">Increase product quantity</div>
+<div class = "box" onclick = "viewProductQuantityDiv();">View product quantity</div>
+<div class = "box" onclick = "todayChangesDiv();">Today changes</div>
+<div class = "box" onclick = "changesBetweenParticularDates();">Changes between two dates</div>
+<div class = "box" onclick = "viewAllCustomers();">View customers</div>
+<div class = "box" onclick = "viewWhichCustomerBoughtWhichThings();">View things bought by customer</div>
+<div class = "box" onclick = "viewDailyIncome();">View daily income</div>
+
+</div>
+
+
+<div id = "productAdd" class = "options" style = "display : none">
+<label for = "categoryName1" style = "margin-top : 2.5%">Choose category</label>
+<select id = "itemsCategory1" name = "categoryName1" style = "width : 80%; height : 10%;">
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+
+<input type = "text" placeholder = "Product Name" id = "productName1" onkeyup = "mouseDown1();" style = "width : 80%; height : 10%;"/>
+<select id = "relatedProducts1" onclick = "putValuesToInputBoxForAddAProduct();" ></select>
+
+<input type = "number" placeholder = "Product Count" id = "productCount1" style = "width : 80%; height : 10%;" />
+
+<input type = "number" placeholder = "Product Price" id = "productPrice1" style = "width : 80%; height : 10%;"/>
+
+<input type = "text" placeholder = "URL(png/jpg/jpeg)" id = "url" style = "width : 80%; height : 10%;"/>
+<input type = "button" value = "Add" onclick = "addProduct();"  class = "react"/>
+</div>
+
+
+
+
+
+
+
+
+<div id = "productDelete" class = "options" style = "display : none">
+<label for = "categoryName2" style = "margin-top : 2.5%">Choose category</label>
+<select id = "itemsCategory2" name = "categoryName2" style = "width : 80%; height : 10%;">
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+
+<input type = "text" placeholder = "Product Name" id = "productName2" onkeyup = "mouseDown2();" style = "width : 80%; height : 10%;"/>
+<select id = "relatedProducts2" onclick = "putValuesToInputBoxForDeleteAProduct();"></select>
+
+<input type = "button" value = "Delete" onclick = "deleteProduct();" class = "react"/>
+</div>
+
+
+
+
+
+
+
+
+<div id = "productEdit" class = "options" style = "display : none">
+<div class = "edits" onclick = "editAProductName();">Edit A Product Name</div>
+<div class = "edits" onclick = "editAProductPrice();">Edit A Product Price</div>
+<div class = "edits" onclick = "editAProductImage();">Edit A Product Image</div>
+</div>
+
+<div id = "editName" style = "display : none;" class = "options">
+<label for = "categoryName3" style = "margin-top : 2.5%">Choose category</label>
+<select id = "itemsCategory3" name = "categoryName3" class = "add" style = "width : 80%; height : 10%;">
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+<input type = "text" placeholder = "Product Name" id = "productName3" onkeyup = "mouseDown3()" style = "width : 80%; height : 10%;"/>
+<select id = "relatedProducts3" onclick = "putValuesToInputBoxForEditAProduct();"></select>
+
+<input type = "text" placeholder = "Product's permenant Name" id = "productName4" style = "width : 80%; height : 10%;"/>
+
+<input type = "button" value = "Edit" onclick = "editProductName();" class = "react"/>
+</div>
+
+
+<div id = "editImage" style = "display : none" class = "options">
+<label for = "editImage" style = "margin-top : 2.5%">Choose category</label>
+<select id = "itemsCategory7" name = "editImage" class = "add" style = "width : 80%; height : 10%;">
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+<input type = "text" placeholder = "Product Name" id = "productName8" onkeyup = "mouseDown7();" style = "width : 80%; height : 10%;"/>
+<select id = "relatedProducts7" onclick = "putValuesToInputBoxForEditAProductImage();"></select>
+<input type = "number" placeholder = "URL(png/jpg/jpeg)" id = "productImage" style = "width : 80%; height : 10%;"/>
+<input type = "button" value = "Edit" onclick = "editProductImage();" class = "react"/>
+</div>
+
+<div id = "editPrice" style = "display : none" class = "options">
+<label for = "editPrice" style = "margin-top : 2.5%">Choose category</label>
+<select id = "itemsCategory6" name = "editPrice" class = "add" style = "width : 80%; height : 10%;">
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+<input type = "text" placeholder = "Product Name" id = "productName7" onkeyup = "mouseDown6();" style = "width : 80%; height : 10%;"/>
+<select id = "relatedProducts6" onclick = "putValuesToInputBoxForEditAProductPrice();"></select>
+<input type = "number" placeholder = "Product's Price" id = "productPrice" style = "width : 80%; height : 10%;"/>
+<input type = "button" value = "Edit" onclick = "editProductPrice();" class = "react"/>
+</div>
+
+
+
+
+<div id = "increaseCount" class = "options" style = "display : none">
+<label for = "categoryName4" style = "margin-top : 2.5%;">Choose category</label>
+<select id = "itemsCategory4" name = "categoryName4" style = "width : 80%; height : 10%;">
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+<input type = "text" placeholder = "Product Name" id = "productName5" onkeyup = "mouseDown4();" style = "width : 80%; height : 10%;"/>
+<select id = "relatedProducts4" onclick = "putValuesToInputBoxForIncreaseProductCount();"></select>
+
+<input type = "number" placeholder = "Product Quantity" id = "quantity1" style = "width : 80%; height : 10%;"/>
+
+<input type = "button" value = "Increase" onclick = "increaseQuantity();" class = "react"/>
+
+</div>
+
+
+<div id = "seeCount" class = "options" style = "display : none">
+<label for = "categoryName5" style = "margin-top : 2.5%;">Choose category</label>
+<select id = "itemsCategory5" name = "categoryName5" class = "add" style = "width : 80%; height : 10%;">
+<option value = "All">All</option>
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+<input type = "button" value = "Specific product" onclick = "openInputBox();" style = "width : 80%; height : 10%;"/>
+<div id = "see" style = "display : none;">
+<input type = "text" placeholder = "Product Name" id = "productName6" onkeyup = "mouseDown5();" style = "width : 80%; height : 25%;"/>
+<select id = "relatedProducts5" onclick = "putValuesToInputBoxForSeeProductCount();" style = "width : 80%; height : 25%;"></select>
+<input type = "button" id = "selectSpecificProduct" value = "search" onclick = "seeSpecificProductCount()" class = "react"/>
+</div>
+
+<input type = "button" value = "See All Products Count" onclick = "seeAllProductCount();" class = "react"/>
+
+</div>
+
+
+
+
+
+
+
+
+<div id = "todayChanges" class = "options" style = "display : none">
+<label for = "categoriesForChanges" style = "margin-top : 2.5%">Choose Category</label>
+<select id = "categories" name = "categoriesForChanges" style = "width : 80%; height : 10%;">
+<option value = "AddedProducts">Added Products</option>
+<option value = "DeletedProducts">Deleted Products</option>
+<option value = "EditedProducts">Edited Products Name</option>
+<option value = "EditedProductsPrices">Edited Products price</option>
+<option value = "EditedProductsImages">Edited Products Image</option>
+<option value = "QuantityIncreasedProducts">Quantity Increased Products</option>
+</select>
+
+<input type = "button" onclick = "seeChanges();" value = "View" class = "react" />
+</div>
+
+
+
+
+
+
+
+
+
+<div id = "changesBetweenDates" class = "options" style = "display : none">
+<label for = "categoriesForChanges" style = "margin-top : 2.5%">Choose Category</label>
+<select id = "categories1" name = "categoriesForChanges" class = "add" style = "width : 80%; height : 10%">
+<option value = "AddedProducts">Added Products</option>
+<option value = "DeletedProducts">Deleted Products</option>
+<option value = "EditedProducts">Edited Products Name</option>
+<option value = "EditedProductsPrices">Edited Products price</option>
+<option value = "EditedProductsImages">Edited Products Image</option>
+<option value = "QuantityIncreasedProducts">Quantity Increased Products</option>
+</select>
+
+<input type = "date" placeholder = "First Date" id = "startDate" style = "width : 80%; height : 10%;"/>
+<input type = "date" placeholder = "Last Date" id = "endDate" style = "width : 80%; height : 10%;"/>
+<input type = "button" onclick = "seeChangesBetweenTwoDates();" value = "View" class = "react"/>
+
+</div>
+
+
+
+
+
+
+
+<div id = "viewThingsBoughtByCustomer" class = "options" style = "display : none">
+<input type = "number" placeholder = "Enter the customer's pin number" id = "customerId" style = "width : 80%; height : 10%;"/>
+<input type = "button" onclick = "seeTheThingsWhichBoughtByTheCustomer();" value = "view" class = "react"/>
+
+</div>
+
+
+
+
+
+
+<div id = "div" style = "display : none;">
+
+
+<div id = "resultDiv" style = "display : none">
+<table id = "productTable"></table>
+</div>
+
+
+<div id = "customers" style = "display : none">
+<table id = "customerTable"></table>
+</div>
+
+</div>
+<script src = "index2.js" type="text/javascript"></script>
+</body>
+</html>

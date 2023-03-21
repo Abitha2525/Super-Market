@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="index3.css" rel="stylesheet" type="text/css" />
+<script src="https://kit.fontawesome.com/8b98370d5e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<div id = "startBar" style = "width : 100%; height : 10%; background : #E1EACA; position : absolute; left : 0%; top : 0%;">
+<i class="fa-solid fa-shop startPurchase" onclick = "selectCategory();"></i>
+<i class="fa-solid fa-star starFavourite" onclick = "getProductsFromFavourites();"></i>
+<i class="fa-solid fa-cart-shopping cart" onclick = "addAndRemoveProducts();"></i>
+<p id = "itemsCount"><small><b>0 items</b></small></p>
+<div onclick = "logOut();" id = "logOut">LogOut</div></div>
+
+<label for = "option" style = "color : #40A453; position : absolute; top : 4%; left : 3%;">Shop by Category : </label>
+<select id = "options" name = "option" onchange = "selectCategory();">
+<option value = "All">All</option>
+<option value = "Snacks" >Snacks</option>
+<option value = "Stationery">Stationery</option>
+<option value = "Dals">Dals</option>
+<option value = "RiceVarieties">Rice varieties</option>
+<option value = "Sauces">Sauces</option>
+<option value = "Oils">Oils</option>
+<option value = "Spices">Spices</option>
+</select>
+
+
+<div id = "box">
+
+<input type = "text" id = "productSelect" placeholder = "Enter the product name "/>
+
+<input type = "button" onclick = "selectCategory();" value = "search" style = "width : 25%; height : 50%; border-radius : 20px; background-color : black; color : white;"/>
+</div>
+<div id = "prod"></div>
+<div id = "continuePurchase" onclick = "backToPurchase();" style = "display : none">Back</div>
+<div id = "purchase" onclick = "getAddress();" style = "display : none">Pay</div>
+<div id = "viewCart" style = "display : none"><table id = "view"></table></div>
+
+<div id = "deliveryDetails" style = "display : none;">
+<label for = "districts">District</label>
+<select id = "district"  style = "width : 60%; height :10%;" name = "districts">
+<option value = "Ariyalur">Ariyalur</option>
+<option value = "Chengalpattu">ChengalPattu</option>
+<option value = "Chennai">Chennai</option>
+<option value = "Coimbatore">Coimbatore</option>
+<option value = "Cuddalore">Cuddalore</option>
+<option value = "Dharmapuri">Dharmapuri</option>
+<option value = "Dindigul">Dindigul</option>
+<option value = "Erode">Erode</option>
+<option value = "Kallakurichi">Kallakurichi</option>
+<option value = "Kanchipuram">Kanchipuram</option>
+<option value = "Kanyakumari">Kanyakumari</option>
+<option value = "Karur">Karur</option>
+<option value = "Krishnagiri">Krishnagiri</option>
+<option value = "Madurai">Madurai</option>
+<option value = "Mayiladuthurai">Mayiladuthurai</option>
+<option value = "Nagapattinam">Nagapattinam</option>
+<option value = "Namakkal">Namakkal</option>
+<option value = "Nilgiris">Nilgiris</option>
+<option value = "Perambalur">Perambalur</option>
+<option value = "Pudukkottai">Pudukkottai</option>
+<option value = "Ramanathapuram">Ramanathapuram</option>
+<option value = "Ranipet">Ranipet</option>
+<option value = "Salem">Salem</option>
+<option value = "Sivagangai">Sivagangai</option>
+<option value = "Tenkasi">Tenkasi</option>
+<option value = "Thanjavur">Thanjavur</option>
+<option value = "Theni">Theni</option>
+<option value = "Tuticorin">Tuticorin</option>
+<option value = "Tiruchirappalli">Tiruchirappalli</option>
+<option value = "Tirunelvel">Tirunelveli</option>
+<option value = "Tirupathur">Tirupathur</option>
+<option value = "Tiruppur">Tiruppur</option>
+<option value = "Tiruvallur">Tiruvallur</option>
+<option value = "Tiruvannamalai">Tiruvannamalai</option>
+<option value = "Tiruvarur">Tiruvarur</option>
+<option value = "Vellore">Vellore</option>
+<option value = "Viluppuram">Viluppuram</option>
+<option value = "Virudhunagar">Virudhunagar</option>
+</select>
+
+<label for = "village">Village/City : </label>
+<input type = "text" placeholder = "Village/City" style = "width : 60%; height : 10%;"/>
+<label for = "landmark">Landmark : </label>
+<input type = "text" placeholder = "LandMark" style = "width : 60%; height : 10%"/>
+<div id = "go" onclick = "showQRCode();">Go</div>
+ </div>
+<div id = "scanQR" style = "display : none;">
+<div style = "width : 75%; height : 80%;"><img src = "Appa_QRCode.jpeg" style = "width : 395px; height : 620px;"/></div><div id = "ok" onclick = "allOk();">Ok</div>
+</div>
+<script src = "index3.js" type="text/javascript"></script>
+</body>
+</html>
