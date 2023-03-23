@@ -68,14 +68,12 @@ public class User extends HttpServlet {
 				UUID uuid = UUID.randomUUID();
 				Cookie cookie = new Cookie("SESSIONID", uuid.toString());
 				response.addCookie(cookie);
-				System.out.println(mobileNumber);
 				PreparedStatement ppst = ConstantVariables.dbConnection.prepareStatement("select role, name, mobileNumber, pinNumber from LoginUsers where mobileNumber = ? and pinNumber = ?");
 			    ppst.setString(1, mobileNumber);
 			    ppst.setInt(2, pinNumber);
 				ResultSet rs = ppst.executeQuery();
 			    if(rs.next()) {
 			    	role = rs.getString(1);
-			    	System.out.println(role+ ".............");
 			    }
 			    
 			    ppst = ConstantVariables.dbConnection.prepareStatement("insert into sessions values(?, ?)");
@@ -122,7 +120,6 @@ public class User extends HttpServlet {
 			catch(Exception ex) {
 				ex.printStackTrace();
 			}
-			System.out.println(responseObject.toString());
 		response.getWriter().append(responseObject.toString());
 	}
 

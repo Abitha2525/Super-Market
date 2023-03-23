@@ -109,7 +109,6 @@ public class BuyingProducts {
 	public static JSONObject addProductsToCart(String product, String quantity1, Date date, String mobile) {
 		JSONObject jsonObject = new JSONObject();
 		try {
-			System.out.println(quantity1);
 			int quantity = Integer.valueOf(quantity1);
 			double price = 0;
 			int totalQuantity = 0;
@@ -153,16 +152,13 @@ public class BuyingProducts {
 			for(int i = 0; i < buy.getList().size(); i++) {
 				if(buy.getList().get(i).getProductName().equals(product)) {
 					check = true;
-//					int productQuantityForPurchase = buy.getList().get(i).getQuantity();
 					buy.getList().get(i).setQuantity(quantity);
-					System.out.println("quantity : " + buy.getQuantity());
 					break;
 				}
 			}
 			if(!check) {
 			buy.addToList(buy);
 			}
-			System.out.println(list.get(0).getQuantity() + " " + list.get(0).getPrice());
 			jsonObject.put("statusCode", 200);
 			jsonObject.put("message", "Bought successfully");
 				}
@@ -214,7 +210,6 @@ public class BuyingProducts {
 		for(BuyingProducts b : list) {
 			if(b.getProductName().equals(product)) {
 				list.remove(b);
-				System.out.println(b.getProductName());
 				break;
 			}
 		}

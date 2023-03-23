@@ -9,7 +9,6 @@ addEventListener("DOMContentLoaded", (event) => {
 var listLength = 0;
 var favouriteList;
 var pinNumber;
-//selectCategory();
  function logOut(){
 	 var xhr = new XMLHttpRequest();
 	 xhr.onreadystatechange = function(){
@@ -31,13 +30,11 @@ var pinNumber;
  
  
  function searchProducts(product, category){
-	 console.log(document.getElementById("aa"));
 	  document.getElementById("prod").innerHTML = "";
 	  document.getElementById("box").style.display = "block";
 	  document.getElementById("box").style.display = "flex";
 	 
 	 getProductsFromFavouritesForNotes();
-	 console.log(favouriteList + ".......");
 	 var xhr = new XMLHttpRequest();
 	 document.getElementById("itemsCount").innerText = listLength + " items ";
 	 xhr.onreadystatechange = () =>{
@@ -49,7 +46,6 @@ var pinNumber;
 				 document.getElementById("prod").innerHTML += "<div class = 'productBoxes'><div class = 'imageBoxes' ><img src = '" + json.list[i].url + "' style = 'width : 80px; height : 80px;'/></div><h5 style = 'font-size : 1rem;'>" +  json.list[i].product + "</h5><p style = 'font-size : 1em' >Price : Rs.  " + json.list[i].price + "</p><br><div id = 'buyCount'><input type = 'number' class = 'count' id = '" + json.list[i].product + "sample" + "' style = 'display : none;' value = '1' /><div id = 'buy' class = '" + json.list[i].product + "sample"+ "' onclick = 'buyTheProducts(this)'>Buy Now </div><i style = 'font-size : 1.5rem;' id = '" + json.list[i].product + "favourite'" +  "class='fa-solid fa-heart " + json.list[i].product+ "' onclick = 'addAndRemoveFromFavourites(this)' ></i></div></div>";
 			     for(var j = 0; j < favouriteList.length; j++){
 					 if(json.list[i].product == favouriteList[j].product){
-						 console.log(favouriteList[j].product + ",,,,,,/");
 						 document.getElementById(json.list[i].product + "favourite").classList.add("addToFavourite");
 					 }
 				 }
@@ -73,9 +69,7 @@ var pinNumber;
  
  function buyTheProducts(list){
 	 var product = list.getAttribute("class");
-	 console.log(product);
 	 var quantity = document.getElementById(product).value;
-	 console.log(quantity);
 	 
 	 var xhr = new XMLHttpRequest();
 	 xhr.onreadystatechange = () => {
@@ -86,9 +80,7 @@ var pinNumber;
               getItemsCountInCart();
 			}
 			else{
-				//document.getElementById(product).value = "";
 				alert(json.message);
-				console.log(json.message);
 			}
 		}
 		
@@ -120,12 +112,9 @@ var pinNumber;
 			 for(var i = 0; i < json.list.length; i++){
 				 var a = json.list[i].product;
 				
-				//document.getElementById("view").innerHTML += "<div class = 'pro' id = '" + json.list[i].product + "'><td><div class = 'image'><img src = '" + json.list[i].url + "'style = 'width : 50px; height : 50px;' /></div></td><td>" + json.list[i].product + "</td><td>" + json.list[i].price + " Rs. </td><td>" + json.list[i].quantity + " No. </td><td><input type = 'number' class = 'count' id = '" + json.list[i].product + "samples' onchange = 'addQuantityToBuy(this)';/></td><td><input type = 'button' style = 'width : 7%; height : 30%;' onclick = 'removeProductFromCart(this)' value = 'x' id = 'prodBuy' class = '" + json.list[i].product + "'/><td></div>";
 				 document.getElementById("viewCart").innerHTML += "<div class = 'pro' id = '" + json.list[i].product + "'><div class = 'image' ><img src = '" + json.list[i].url + "' style = 'width : 60px; height : 50px;' /></div><p>" + json.list[i].product + "</p><p>" + json.list[i].price + " Rs." + "</p><input type = 'number' class = 'count' id = '" + json.list[i].product + "samples" + "' onchange = 'addQuantityToBuy(this);' value = '" + json.list[i].quantity + "' /><input type = 'button' style = 'width :50%; height : 30%;' onclick = 'removeProductFromCart(this)' value = 'x' id = 'prodBuy' class = '" + json.list[i].product + "'/></div>" ;
 			     document.getElementById(json.list[i].product).style = "display : grid; grid-template-columns : 2fr 7fr 2fr 2fr 1fr;";
-			    // document.getElementById(json.list[i].product + "samples").value = json.list[i].quantity ;
-			     console.log(json.list[i].quantity);
-			 }
+        	 }
 		 }
 	 }
 	 
@@ -136,28 +125,23 @@ var pinNumber;
  
  function addQuantityToBuy(element){
 	 var sample = element.getAttribute("id");
-	 //document.getElementById(product + "sample").value = document.getElementById(sample).value;
 	 var quantity = document.getElementById(sample).value;
 	 console.log(document.getElementById(sample).value);
 	 var product = sample.replace("samples", "").replace("sampls", "");
 	 
 	 var xhr = new XMLHttpRequest();
 	 xhr.onreadystatechange = () => {
-		 console.log(xhr.readyState);
 		if(xhr.readyState == 4 && xhr.status == 200){
 			var json = JSON.parse(xhr.responseText);
 			if(json.statusCode == 200){
               getItemsCountInCart();
 			}
 			else{
-				//document.getElementById(product).value = "";
 				alert(json.message);
-				console.log(json.message);
 			}
 		}
 		
 	 }
-	 //product = product.slice(0, product.length-6);
 	 xhr.open("POST", "http://localhost:8080/NewSuperMarket/user/AddToCart");
 	 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	 xhr.send("product=" + product + "&quantity=" + quantity);
@@ -183,7 +167,6 @@ var pinNumber;
  function removeProductFromCart(prod){ 
 	 listLength -= 1;
 	 var product = prod.getAttribute("class");
-	 console.log(product);
 	 document.getElementById(product).remove();
 	 document.getElementById("itemsCount").innerText = listLength + " items";
 	 
@@ -191,7 +174,6 @@ var pinNumber;
 	 xhr.open("POST", "http://localhost:8080/NewSuperMarket/user/RemoveProductsFromList");
 	 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	 xhr.send("product=" + product);
-	 console.log(product);
  }
  
  function payment(){
@@ -255,20 +237,7 @@ function allOk(){
 }
 
 function addAndRemoveFromFavourites(element){
-	//var product = element.getAttribute("class");
 	var id = element.getAttribute("id");
-	console.log("product = " + product);
-	console.log("id = " + id);
-//	product = product.slice(18);
-	/*product = product.replace(" addToFavourite", "");
-	product = product.replace(" removeFromFavourite", "");
-	product = product.replace(" Favourite", "");
-	product = product.replace(" favourite", "");
-	product = product.replace("favourite", "");
-	*/
-	//var id = product + "favourite";
-	//console.log(id + "..................");
-	//console.log(product);
 	var product = id.replace("favourite", "");
 	var n = 0;
 	if(document.getElementById(id).classList.contains("addToFavourite")){
@@ -290,7 +259,6 @@ function addAndRemoveFromFavourites(element){
 	
 	xhr.onreadystatechange = () => {
 		if(xhr.status == 200 && xhr.readyState == 4){
-			console.log("aa");
 		}
 	}
 	
@@ -337,9 +305,7 @@ function getProductsFromFavouritesForNotes(){
 
 function removeFromFavourites(element){
 	var product = element.getAttribute("class");
-	console.log(product);
 	product = product.slice(18);
-	console.log(product);
 	document.getElementById(product).remove();
 	
 	product = product.substring(0, product.length-3);

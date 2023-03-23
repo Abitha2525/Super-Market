@@ -7,10 +7,7 @@
 	 
 	 xhr.onreadystatechange = function(){
 		 if(xhr.readyState == 4 && xhr.status == 200){
-			// var js = JSON.stringify(this.responseText);
-			console.log(xhr.responseText);
 			 var json = JSON.parse(xhr.responseText);
-			 console.log(json);
 			if(json.statusCode == 200){
 			 alert(json.message);
 			 document.getElementById("productName1").value = "";
@@ -44,7 +41,6 @@
 	 var count = document.getElementById("productCount1").value;
 	 var price = document.getElementById("productPrice1").value;
 	 var url = document.getElementById("url").value;
-	// const date = new Date();
 	 
 	 xhr.open("POST", "http://localhost:8080/NewSuperMarket/admin/AddAProduct");
 	 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -239,8 +235,6 @@
 	   document.getElementById("productName6").style.display = "block";
  }
  function seeSpecificProductCount(){
-	 console.log("aa");
-	// document.getElementById("relatedProducts5").style.display = "block";
 	
 	document.getElementById("productDelete").style.display = "none";
 	document.getElementById("productAdd").style.display = "none";
@@ -257,7 +251,6 @@
 	
 	
 	var category = document.getElementById("itemsCategory5").value;
-	console.log(category);
 	 var element = document.getElementById("relatedProducts5").options.length-1;
 	 for(var i = element; i > -1; i--){
 		 document.getElementById("relatedProducts5").remove(i);
@@ -273,7 +266,7 @@
 				 var json = JSON.parse(this.responseText);
 				 if(json.statusCode == 200){
 					 document.getElementById("div").style.display = "block";
-					  document.getElementById("productTable").innerHTML = "";
+					 document.getElementById("productTable").innerHTML = "";
 					 document.getElementById("resultDiv").style.display = "block";
 					 document.getElementById("resultDiv").style.display = "flex";
 					 document.getElementById("productTable").innerHTML += "<th>Price</th><th>Product</th><th>Quantity</th><th>Image</th>";
@@ -295,8 +288,6 @@
  }
  
  function seeAllProductCount(){
-	// window.location.href = "index3.html";
-	//  document.getElementById("resultDiv").style.display = "block";
 	
 	document.getElementById("productDelete").style.display = "none";
 	document.getElementById("productAdd").style.display = "none";
@@ -322,7 +313,7 @@
 				 var json = JSON.parse(this.responseText);
 				 if(json.statusCode == 200){
 					 document.getElementById("div").style.display = "block";
-					  document.getElementById("productTable").innerHTML = "";
+					 document.getElementById("productTable").innerHTML = "";
 					 document.getElementById("resultDiv").style.display = "block";
 					 document.getElementById("resultDiv").style.display = "flex";
 					 document.getElementById("productTable").innerHTML += "<th>Price</th><th>Product</th><th>Quantity</th><th>Image</th>";
@@ -331,7 +322,6 @@
 					 }
 				 }
 				 else{
-					 console.log(json.message);
 					 alert(json.message);
 				 }
 				 document.getElementById("productTable").innerHTML += "<br><br><br>";
@@ -344,9 +334,7 @@
  }
  
  function goToAdminChoices(){
-	// document.getElementById("box").style.display = "block";
 	 document.getElementById("resultDiv").style.display = "none";
-	// document.getElementById("resultDiv").innerHTML = "";
 	 document.getElementById("productName6").value = "";
 	 document.getElementById("see").style.display = "none";
 	 document.getElementById("productName6").style.display = "none";
@@ -449,7 +437,6 @@
 		 document.getElementById("relatedProducts4").remove(j);
 	 }
 	 var item = document.getElementById("productName5").value;
-	// var quantity = document.getElementById("quantity1").value;
 	 var xhr = new XMLHttpRequest();
 	 
 	 xhr.onreadystatechange = function(){
@@ -472,12 +459,10 @@
  
  function putValuesToInputBoxForIncreaseProductCount(){
 	 document.getElementById("productName5").value = document.getElementById("relatedProducts4").value;
-	 console.log(document.getElementById("relatedProducts4").value);
  }
  
  function mouseDown5(){
 	 var table = document.getElementById("itemsCategory5").value;
-	 console.log(table);
 	 var element = document.getElementById("relatedProducts5").options.length-1;
 	 for(var j = element; j > -1; j--){
 		 document.getElementById("relatedProducts5").remove(j);
@@ -508,7 +493,6 @@
  
  function mouseDown6(){
 	 var table = document.getElementById("itemsCategory6").value;
-	 console.log(table);
 	 var element = document.getElementById("relatedProducts6").options.length-1;
 	 for(var j = element; j > -1; j--){
 		 document.getElementById("relatedProducts6").remove(j);
@@ -540,7 +524,6 @@
  
  function mouseDown7(){
 	 var table = document.getElementById("itemsCategory7").value;
-	 console.log(table);
 	 var element = document.getElementById("relatedProducts7").options.length-1;
 	 for(var j = element; j > -1; j--){
 		 document.getElementById("relatedProducts7").remove(j);
@@ -571,7 +554,6 @@
  
  
 function logout(){
-	console.log("logOut");
 	var xhr = new XMLHttpRequest();
 	
 	xhr.onreadystatechange = function(){
@@ -653,7 +635,6 @@ function seeChanges(){
 			document.getElementById("productTable").innerHTML += "<br><br><br>";
 		}
 		else {
-			console.log(json.message);
 			alert(json.message);
 		}
 		}
@@ -685,7 +666,6 @@ function seeChangesBetweenTwoDates(){
 	var category = document.getElementById("categories1").value;
 	var date1 = document.getElementById("startDate").value;
 	var date2 = document.getElementById("endDate").value;
-	console.log(category);
 	var xhr = new XMLHttpRequest();
 	
 	xhr.onreadystatechange = () => {
@@ -958,7 +938,6 @@ function seeTheThingsWhichBoughtByTheCustomer(){
 	            document.getElementById("editPrice").style.display = "none";
 	            document.getElementById("editImage").style.display = "none";
 				
-				console.log("aa");
 				for(var i = 0; i < json.list.length; i++){
 					document.getElementById("productTable").innerHTML += "<td>" + json.list[i].date + "</td><td>" + json.list[i].product + "</td><td>" + json.list[i].quantity + "</td><td><div style = 'width : 5%; height : 5%;' ><img src = '" + json.list[i].url + "' style = 'width : 150px; height : 150px;'/></div></td>";
 				}

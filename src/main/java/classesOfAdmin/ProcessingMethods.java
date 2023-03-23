@@ -118,12 +118,8 @@ public class ProcessingMethods {
 			if(rs.next()) {
 				id = rs.getInt(1);
 			}
-			System.out.println(id);
 			if(id != 0) {
 				
-//				ppst = ConstantVariables.dbConnection.prepareStatement("select * from Products joins urlTable on Products.urlOfProducts = urlTable.urlOfProducts");
-//				ResultSet r = ppst.executeQuery();
-//				
 				ppst = ConstantVariables.dbConnection.prepareStatement("select productName, productCount, urlOfProducts, price from Products where categoryId = ? and status = ?");
 				ppst.setInt(1, id);
 				ppst.setString(2, "Available");
@@ -347,7 +343,6 @@ public class ProcessingMethods {
 			
 		}
 		else if(category.equals("EditedProductsPrices")) {
-			System.out.println("success");
 			boolean check = false;
 			ppst = ConstantVariables.dbConnection.prepareStatement("select productId from DateDetails where editPriceDate = ?");
 			ppst.setDate(1, date);
@@ -401,7 +396,6 @@ public class ProcessingMethods {
 			
 		}
 		else if(category.equals("EditedProductsImages")) {
-			System.out.println("success");
 			boolean check = false;
 			ppst = ConstantVariables.dbConnection.prepareStatement("select productId from DateDetails where editImageDate = ?");
 			ppst.setDate(1, date);

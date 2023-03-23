@@ -53,7 +53,6 @@ public class EditAProductImageFilter extends HttpFilter implements Filter {
 	           PreparedStatement ppst = ConstantVariables.dbConnection.prepareStatement("select productName from Products where productName = ?");
 	    	   ppst.setString(1, productOldName);
 	           ResultSet rs = ppst.executeQuery();
-	    	   System.out.println(productOldName + "...");
 	    	   if(rs.next()) {
 	    		   chain.doFilter(request, response);
 	    	   }

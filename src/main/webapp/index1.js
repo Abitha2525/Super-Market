@@ -1,6 +1,8 @@
 /**
  * 
  */
+var mobileNumberOfAdmin;
+var pinOfAdmin;
 
 function adminOptions(){
 	document.getElementById("logOut").style.display = "block";
@@ -32,12 +34,14 @@ function admin(){
 	
 	setTimeout(adminOptions, 500);
 }
+
+  
 function viewAdminProfile(){
 	
 	document.getElementById("adminSettings").style.display = "none";
 	document.getElementById("adminProfile").style.display = "block";
 	document.getElementById("adminProfile").style.display = "flex";
-	document.getElementById("adminProfile").innerHTML += "<p style = 'font-size : 1.5rem' >Admin MobileNumber : </p>" + "<input type = 'text' style = 'width : 80%; height : 12%; font-size : 1.5rem' id = 'adminMobileNumberInProfile' value = '"+ document.getElementById("userMobileNumber").value + "'/>" + "<p style = 'font-size : 1.5rem'>Admin PinNumber : </p>" + "<input type = 'text' style = 'width : 80%; height : 12%; font-size : 1.5rem' id = 'adminPinNumberInProfile' value = '" + document.getElementById("userId").value + "'/>" + "<div style = 'width : 100%; height : 10%; display : flex; justify-content : space-evenly;'><input type = 'button' onclick = 'editAdminProfile()' value = 'Save'/>" + "<input type = 'button' onclick = 'backToAdminSettings()' value = 'CANCEL'/></div>";
+	document.getElementById("adminProfile").innerHTML += "<p style = 'font-size : 1.5rem' >Admin MobileNumber : </p>" + "<input type = 'text' style = 'width : 80%; height : 12%; font-size : 1.5rem' id = 'adminMobileNumberInProfile' value = '"+ mobileNumberOfAdmin + "'/>" + "<p style = 'font-size : 1.5rem'>Admin PinNumber : </p>" + "<input type = 'text' style = 'width : 80%; height : 12%; font-size : 1.5rem' id = 'adminPinNumberInProfile' value = '" + pinOfAdmin + "'/>" + "<div style = 'width : 100%; height : 10%; display : flex; justify-content : space-evenly;'><input type = 'button' onclick = 'editAdminProfile()' value = 'Save'/>" + "<input type = 'button' onclick = 'backToAdminSettings()' value = 'CANCEL'/></div>";
 	
 }
 
@@ -54,9 +58,6 @@ function editAdminProfile(){
 			var json = JSON.parse(xhr.responseText);
 			console.log(json.message);
 			if(json.statusCode == 200){
-				console.log(json);
-				//document.getElementById("newAdminNameOrPassword").style = "position : absolute; top : 1%; left : 40%;";
-				//document.getElementById("newAdminNameOrPassword").innerHTML = "<h3>" + json.message +  "</h3>";
 				setTimeout(backToAdminSettings, 500);
 			}
 			else{
@@ -77,7 +78,6 @@ function backToAdminSettings(){
 }
 
 function optionsOfAdmin(){
-	var xhr = new XMLHttpRequest();
 	
 	window.location.href = "index2.html";
 }
@@ -98,14 +98,12 @@ function logOutForUser(){
 
 
 function userLogIn(){
-	//var name = document.getElementById("userName").value;
 	var mobileNumber = document.getElementById("userMobileNumber").value;
 	var id = document.getElementById("userId").value;
 	
-	//console.log(name);
-	console.log(mobileNumber);
-	console.log(id);
-	
+	mobileNumberOfAdmin = mobileNumber;
+    pinOfAdmin = id;
+  
 	userLoginProcess(mobileNumber, id);
 }
 
@@ -116,16 +114,19 @@ function userLoginProcess(mobileNumber, id){
 		if(this.readyState == 4){
 			if(this.status == 200){
 				var json = JSON.parse(xhr4.responseText);
-				console.log(json);
 				if(json.statusCode == 201){
 					document.getElementById("userBlock").classList.remove("optionsOfEveryOne");
-					console.log("admin");
 					setTimeout(admin, 500);
 				}
 				else if(json.statusCode == 200){
 					document.getElementById("userBlock").classList.remove("optionsOfEveryOne");
-					console.log("user");
 					setTimeout(getStartedBuying, 500);
+				}
+				else if(json.statusCode == 1000){
+					window.location.href = "index3.html";
+				}
+				else if(json.statusCode == 1001){
+					window.location.href = "index2.html";
 				}
 				else{
 					alert(json.message);
@@ -138,7 +139,6 @@ function userLoginProcess(mobileNumber, id){
 	var reqParams = {};
 	reqParams.userMobileNumber = mobileNumber;
 	reqParams.userId = id;
-	console.log(reqParams.userId);
 	
 	xhr4.open("POST", "http://localhost:8080/NewSuperMarket/User");
 	xhr4.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -198,6 +198,8 @@ function forgotPin(){
 	document.getElementById("userBlockForSignUp").style.display = 'none';
 	document.getElementById("forgotPinBlock").style.display = "block";
 	document.getElementById("forgotPinBlock").style.display = "flex";
+	
+	
 }
 
 function forgotPinAndSeeThePin(){
@@ -210,6 +212,8 @@ function forgotPinAndSeeThePin(){
 			var json = JSON.parse(xhr.responseText);
 			if(json.statusCode == 200){
 				alert("Your pin is : " + json.pin);
+				mobileNumberOfAdmin = mobile;
+				pinOfAdmin = json.pin;
 				userLoginProcess(mobile, json.pin);
 			}
 			else{

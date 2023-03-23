@@ -19,7 +19,6 @@ public class FinalOrder {
 			jsonArray.put(jsonObject);
 		}
 		
-		System.out.println(jsonArray+"\n\n");
 		return jsonArray;
 	}
 }

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -23,7 +24,7 @@ import fullTimeUse.ConstantVariables;
 /**
  * Servlet Filter implementation class SignInFilter
  */
-//@WebFilter("/SignInFilter")
+@WebFilter(filterName = "SignInFilter", urlPatterns = {"/User"})
 public class SignInFilter extends HttpFilter implements Filter {
        
     /**
@@ -65,22 +66,20 @@ public class SignInFilter extends HttpFilter implements Filter {
 				for(int i = 0; i < cookies.length; i++) {
 					if(cookies[i].getName().equals("SESSIONID")) {
 						if(rs.getString(1).equals(cookies[i].getValue()) && rs2.getString(1).equals("User")) {
-							System.out.println(cookies[i].getValue());
-							System.out.println("userAgain");
 							check = true;
-							res.sendRedirect("./index3.html");
+							jsonObject.put("statusCode", 1000);
 							break;
 						}
 						else if(rs.getString(1).equals(cookies[i].getValue()) && rs2.getString(1).equals("Admin")) {
 							check = true;
-							res.sendRedirect("/NewSuperMarket/index2.html");
+							jsonObject.put("statusCode", 1001);
 							break;
 						}
 					}
 				}
 			}
 				if(check) {
-					break;
+				   response.getWriter().append(jsonObject.toString());
 				}
 			}
 			if(!check) {

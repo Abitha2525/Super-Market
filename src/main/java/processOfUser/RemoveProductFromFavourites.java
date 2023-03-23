@@ -65,7 +65,6 @@ public class RemoveProductFromFavourites extends HttpServlet {
 			}
 		}
 		FavouritesDetails obj = new FavouritesDetails();
-		System.out.println("aaa");
 		obj.removeProductFromFavourites(product, mobile);
 	}
 	catch(Exception ex) {

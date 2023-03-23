@@ -100,11 +100,8 @@ public class FavouritesDetails {
 			ppst = ConstantVariables.dbConnection.prepareStatement("select productId from Products where productName = ? and status = ?");
 			ppst.setString(1, product);
 			ppst.setString(2, "Available");
-			System.out.println(product + "....");
 			ResultSet rs2 = ppst.executeQuery();
-			System.out.println("aa");
 			if(rs2.next()) {
-				System.out.println("a");
 				ppst = ConstantVariables.dbConnection.prepareStatement("delete from favouritesTable where productId = ? and pinNumber = ?");
 				ppst.setInt(1, rs2.getInt(1));
 				ppst.setLong(2, pin);

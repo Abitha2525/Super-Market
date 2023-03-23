@@ -107,7 +107,6 @@ public class EditTheProfileOfAdmin extends HttpServlet {
 			jsonObject.put("statusCode", 400);
 			jsonObject.put("message", "Some error occurred");
 		}
-		System.out.println(jsonObject.toString());
 		response.getWriter().append(jsonObject.toString());
 	}
 

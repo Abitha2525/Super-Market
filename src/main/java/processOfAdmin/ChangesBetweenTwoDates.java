@@ -54,7 +54,6 @@ public class ChangesBetweenTwoDates extends HttpServlet {
 		String date1 = request.getParameter("date1");
 		String date2 = request.getParameter("date2");
 		String category = request.getParameter("category");
-		System.out.println(category);
 		java.sql.Date startingDate = null;
 		java.sql.Date endingDate = null;
 		
@@ -73,7 +72,6 @@ public class ChangesBetweenTwoDates extends HttpServlet {
 		
 		startingDate = new java.sql.Date(startDate.getTime());
 		endingDate = new java.sql.Date(endDate.getTime());
-		System.out.println(startingDate + " ............ " + endingDate);
 		if(endingDate.getTime() < startingDate.getTime()) {
 			jsonObject.put("statusCode", 400);
 			jsonObject.put("message", "Last date is before the start date...Enter valid date");
